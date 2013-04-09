@@ -4,7 +4,7 @@ This plugin provides an interface to implement sanity checks on moodle.
     
 Moodle version
 --------------
->= 2.3   
+\>= 2.3   
     
 Installation
 ------------
