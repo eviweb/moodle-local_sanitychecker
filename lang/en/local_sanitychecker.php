@@ -32,3 +32,21 @@
 
 $string['pluginname'] = 'Sanity checker utility';
 $string['local_sanitychecker_menu'] = 'Sanity checker';
+$string['local_sanitychecker_table_head_name'] = 'Sanity checker name';
+$string['local_sanitychecker_table_head_information'] = 'Informations';
+$string['local_sanitychecker_action_check'] = 'Run test';
+$string['local_sanitychecker_action_resolve'] = 'Resolve issue';
+$string['local_sanitychecker_check_succeed'] = 'All is correct';
+$string['local_sanitychecker_action_resolve_invit'] = 'Click on the action "<i>'.
+    $string['local_sanitychecker_action_resolve'].'"</i> to solve the problem';
+
+// Sanity checkers
+// QuizSanityChecker
+$string['local_sanitychecker_impl_quiz'] = 'Quiz Sanity Checker';
+$string['local_sanitychecker_impl_quiz_description'] =
+    'Look for database inconsistencies related to the quiz module';
+$string['local_sanitychecker_impl_quiz_notification_nonvalidqqi'] =
+    'The following quiz question instances are non valid : ';
+$string['local_sanitychecker_impl_quiz_notification_quiz'] = 'Quiz ID : ';
+$string['local_sanitychecker_impl_quiz_notification_instances'] =
+    'Question Instance IDs : ';
