@@ -65,9 +65,9 @@ interface SanityChecker
     public function doCheck();
     
     /**
-     * get informations on the problem detected
+     * get information on the problem detected
      * 
-     * @return string       returns informations related to the detected problem
+     * @return string       returns information related to the detected problem
      *                      or an empty string if there is no issue
      */
     public function getInformationOnIssue();

@@ -93,7 +93,7 @@ final class QuizSanityChecker extends DatabaseSanityChecker
     }
     
     /**
-     * update related quiz informations
+     * update related quiz information
      * 
      * @param integer       $id         quiz id
      */

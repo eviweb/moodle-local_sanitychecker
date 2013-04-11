@@ -33,7 +33,7 @@
 $string['pluginname'] = 'Sanity checker utility';
 $string['local_sanitychecker_menu'] = 'Sanity checker';
 $string['local_sanitychecker_table_head_name'] = 'Sanity checker name';
-$string['local_sanitychecker_table_head_information'] = 'Informations';
+$string['local_sanitychecker_table_head_information'] = 'Information';
 $string['local_sanitychecker_action_check'] = 'Run test';
 $string['local_sanitychecker_action_resolve'] = 'Resolve issue';
 $string['local_sanitychecker_check_succeed'] = 'All is correct';

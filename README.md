@@ -40,7 +40,7 @@ Its table lists all the available sanity checkers under four columns :
 3.  _Actions :_ here is displayed a dynamic link to run the actions to perform    
 >   check : to run the tests    
 >   resolve : in case a problem is found, apply the fix    
-4.  _Informations :_ displays contextual informations about what is done    
+4.  _Information :_ displays contextual information about what is done    
     
 So choose which test you want to run and click on **Run test**.    
 If a problem is found the previous action link is renamed **Resolve issue**.   
@@ -75,9 +75,9 @@ Create an implementation of the `SanityChecker`interface :
         public function doCheck();
 
         /**
-         * get informations on the problem detected
+         * get information on the problem detected
          * 
-         * @return string       returns informations related to the detected problem
+         * @return string       returns information related to the detected problem
          *                      or an empty string if there is no issue
          */
         public function getInformationOnIssue();
@@ -88,7 +88,7 @@ Create an implementation of the `SanityChecker`interface :
         public function resolveIssue();
     }
 
-or extends the abstract DatabaseSanityChecker which is a class helper to perform 
+or extends the abstract `DatabaseSanityChecker` which is a class helper to perform 
 sanity checks on database records.    
      
 ### register the service implementation
@@ -101,4 +101,4 @@ or to install it under the `./classes` directory.**
 Each folder under the subtree of this directory, except `META-INF`, represents 
 a part of the class namespace.    
 To illustrate this, the `SanityChecker` interface is declared under the namespace 
-`\evidev\moodle\plugins` and is located at `./classes/evidev/moodle/plugins/Sanitychecker.php`
+`\evidev\moodle\plugins` and is located at `./classes/evidev/moodle/plugins/SanityChecker.php`
