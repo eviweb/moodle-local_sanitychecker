@@ -44,7 +44,9 @@ $string['local_sanitychecker_action_resolve_invit'] =
 // QuizSanityChecker
 $string['local_sanitychecker_impl_quiz'] = 'Quiz Sanity Checker';
 $string['local_sanitychecker_impl_quiz_description'] =
-    'Look for database inconsistencies related to the quiz module';
+    'Look for database inconsistencies related to the quiz module<br />
+     Read more about this issue on the on Moodle Issue Tracker at
+     <a href="https://tracker.moodle.org/browse/MDL-32791" target="_blank">MDL-32791</a>';
 $string['local_sanitychecker_impl_quiz_notification_nonvalidqqi'] =
     'The following quiz question instances are non valid : ';
 $string['local_sanitychecker_impl_quiz_notification_quiz'] = 'Quiz ID : ';
