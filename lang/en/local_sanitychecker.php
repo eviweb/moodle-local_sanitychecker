@@ -37,8 +37,8 @@ $string['local_sanitychecker_table_head_information'] = 'Information';
 $string['local_sanitychecker_action_check'] = 'Run test';
 $string['local_sanitychecker_action_resolve'] = 'Resolve issue';
 $string['local_sanitychecker_check_succeed'] = 'All is correct';
-$string['local_sanitychecker_action_resolve_invit'] = 'Click on the action "<i>'.
-    $string['local_sanitychecker_action_resolve'].'"</i> to solve the problem';
+$string['local_sanitychecker_action_resolve_invit'] = 
+    'Click on the action "<i>Resolve issue</i>" to solve the problem';
 
 // Sanity checkers
 // QuizSanityChecker
