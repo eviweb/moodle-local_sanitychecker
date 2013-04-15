@@ -36,11 +36,13 @@ use \evidev\moodle\plugins\sanitychecker\DatabaseSanityChecker;
 
 /**
  * Clean up and refresh utility for the quiz module
+ * Solved the known issue : MDL-32791
  * 
  * @package     local_sanitychecker
  * @author      Eric VILLARD <dev@eviweb.fr>
  * @copyright	(c) 2013 Eric VILLARD <dev@eviweb.fr>
  * @license     http://www.opensource.org/licenses/mit-license.html  MIT License 
+ * @link        https://tracker.moodle.org/browse/MDL-32791
  */
 final class QuizSanityChecker extends DatabaseSanityChecker
 {
