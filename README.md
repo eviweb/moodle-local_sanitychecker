@@ -102,3 +102,7 @@ Each folder under the subtree of this directory, except `META-INF`, represents
 a part of the class namespace.    
 To illustrate this, the `SanityChecker` interface is declared under the namespace 
 `\evidev\moodle\plugins` and is located at `./classes/evidev/moodle/plugins/SanityChecker.php`
+     
+Sanity Checker List
+-------------------
+Please refer to the [related wiki page](https://github.com/eviweb/moodle-local_sanitychecker/wiki)    
