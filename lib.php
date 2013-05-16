@@ -42,7 +42,7 @@ defined('MOODLE_INTERNAL') || die();
 function local_sanitychecker_extends_settings_navigation(settings_navigation &$settings, $node)
 {
     $root = $settings->get('root');
-    if ($root !== false) {
+    if ($root !== false && has_capability('moodle/site:config', get_system_context())) {
         $admintools = $root->create(
             get_string('local_sanitychecker_menu', 'local_sanitychecker'),
             new moodle_url('/local/sanitychecker/view.php'),
