@@ -110,7 +110,7 @@ while ($it->valid()) {
     // presentation table data
     $data = array(
         $sc->getName(),
-        $sc->getDescription(),
+        $sc->getDescription(),        
         $OUTPUT->action_link(
             new moodle_url(
                 $PAGE->url,
@@ -128,5 +128,6 @@ while ($it->valid()) {
 // print the page
 echo $OUTPUT->header();
 echo $OUTPUT->heading(get_string('pluginname', $pluginname));
+echo $OUTPUT->container(get_string($pluginname.'_disclaimer', $pluginname), 'notifyproblem', 'disclaimer');
 echo html_writer::table($table);
 echo $OUTPUT->footer();

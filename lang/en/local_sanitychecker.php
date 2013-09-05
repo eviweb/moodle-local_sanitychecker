@@ -32,6 +32,10 @@
 
 $string['pluginname'] = 'Sanity checker utility';
 $string['local_sanitychecker_menu'] = 'Sanity checker';
+$string['local_sanitychecker_disclaimer'] = 'IMPORTANT NOTE<br />Be aware that
+    these fixes modify directly database records.<br /><b>It is highly recommended 
+    to perform a backup of your database before using them.</b><br />No revert 
+    is possible at this time !';
 $string['local_sanitychecker_table_head_name'] = 'Sanity checker name';
 $string['local_sanitychecker_table_head_information'] = 'Information';
 $string['local_sanitychecker_action_check'] = 'Run test';
