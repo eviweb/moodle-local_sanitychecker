@@ -40,6 +40,7 @@ $string['local_sanitychecker_table_head_name'] = 'Sanity checker name';
 $string['local_sanitychecker_table_head_information'] = 'Information';
 $string['local_sanitychecker_action_check'] = 'Run test';
 $string['local_sanitychecker_action_resolve'] = 'Resolve issue';
+$string['local_sanitychecker_action_confirm'] = 'Do you really want to continue ?';
 $string['local_sanitychecker_check_succeed'] = 'All is correct';
 $string['local_sanitychecker_action_resolve_invit'] = 
     'Click on the action "<i>Resolve issue</i>" to solve the problem';

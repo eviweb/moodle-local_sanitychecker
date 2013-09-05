@@ -69,65 +69,81 @@ $PAGE->set_title($SITE->shortname." - ".get_string('pluginname', $pluginname));
 $PAGE->set_heading($SITE->fullname);
 $PAGE->set_pagelayout('standard');
 
-// presentation table object
-$table = new html_table();
-$table->width = '100%';
-$table->head = array(
-    get_string($pluginname.'_table_head_name', $pluginname),
-    get_string('description'),
-    get_string('action'),
-    get_string($pluginname.'_table_head_information', $pluginname),
-);
-$table->size = array('20%', '30%', '20%', '30%');
-$table->data = array();
-
-// get sanity checker instances
-$scprovider = SanityCheckerProvider::create($DB);
-$it = $scprovider->iterator();
-$i = 1;
-while ($it->valid()) {
-    $sc = $it->current();
-    $check = true;
-    $message = '';
-
-    // test whether the current checker is called to perfom an action or not
-    if ($checker_num === $i) {
-        if ($checker_action === 'check') {
-            // perform the tests
-            $check = $sc->doCheck();
-        } elseif ($checker_action === 'resolve') {
-            // resolve an issue
-            $sc->resolveIssue();
-        }
-        // update the message of the column 'information'
-        $message = $check ?
-            get_string($pluginname.'_check_succeed', $pluginname) :
-            $sc->getInformationOnIssue().
-                '<p>'.get_string($pluginname.'_action_resolve_invit', $pluginname).'</p>';
-    }
-    $action = $check ? 'check' : 'resolve';
-
-    // presentation table data
-    $data = array(
-        $sc->getName(),
-        $sc->getDescription(),        
-        $OUTPUT->action_link(
-            new moodle_url(
-                $PAGE->url,
-                array('checker' => $i, 'action' => $check ? 'check' : 'resolve')
-            ),
-            get_string($pluginname.'_action_'.$action, $pluginname)
-        ),
-        $message
+// check confirmation status
+$confirm = $checker_action == 'confirm';
+if (!$confirm) {
+    // presentation table object
+    $table = new html_table();
+    $table->width = '100%';
+    $table->head = array(
+        get_string($pluginname.'_table_head_name', $pluginname),
+        get_string('description'),
+        get_string('action'),
+        get_string($pluginname.'_table_head_information', $pluginname),
     );
-    array_push($table->data, $data);
-    $it->next();
-    $i++;
+    $table->size = array('20%', '30%', '20%', '30%');
+    $table->data = array();
+
+    // get sanity checker instances
+    $scprovider = SanityCheckerProvider::create($DB);
+    $it = $scprovider->iterator();
+    $i = 1;
+    while ($it->valid()) {
+        $sc = $it->current();
+        $check = true;
+        $message = '';
+
+        // test whether the current checker is called to perfom an action or not
+        if ($checker_num === $i) {
+            if ($checker_action === 'check') {
+                // perform the tests
+                $check = $sc->doCheck();
+            } elseif ($checker_action === 'resolve') {
+                // resolve an issue
+                $sc->resolveIssue();
+            }
+            // update the message of the column 'information'
+            $message = $check ?
+                get_string($pluginname.'_check_succeed', $pluginname) :
+                $sc->getInformationOnIssue().
+                    '<p>'.get_string($pluginname.'_action_resolve_invit', $pluginname).'</p>';
+            $message = $OUTPUT->container($message, $check ? 'notifysuccess' : 'important', 'information_message');
+        }
+        $action = $check ? 'check' : 'resolve';
+
+        // presentation table data
+        $data = array(
+            $sc->getName(),
+            $sc->getDescription(),        
+            $OUTPUT->action_link(
+                new moodle_url(
+                    $PAGE->url,
+                    array('checker' => $i, 'action' => $check ? 'check' : 'confirm')
+                ),
+                get_string($pluginname.'_action_'.$action, $pluginname)
+            ),
+            $message
+        );
+        array_push($table->data, $data);
+        $it->next();
+        $i++;
+    }
 }
 
 // print the page
 echo $OUTPUT->header();
 echo $OUTPUT->heading(get_string('pluginname', $pluginname));
 echo $OUTPUT->container(get_string($pluginname.'_disclaimer', $pluginname), 'notifyproblem', 'disclaimer');
-echo html_writer::table($table);
+if ($confirm) {
+    echo $OUTPUT->confirm(
+        $OUTPUT->container(get_string($pluginname.'_action_confirm', $pluginname), 'notifyproblem', 'confirm'),
+        new moodle_url(
+            $PAGE->url,
+            array('checker' => $checker_num, 'action' => 'resolve')
+        ), 
+        $PAGE->url
+    );
+} else {
+    echo html_writer::table($table);
+}
 echo $OUTPUT->footer();
