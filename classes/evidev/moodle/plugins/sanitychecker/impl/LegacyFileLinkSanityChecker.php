@@ -134,9 +134,9 @@ final class LegacyFileLinkSanityChecker extends DatabaseSanityChecker
                 $replace = $record['wwwroot'].'/file.php/'.$record['course'];
                 $this->db->execute($sql, array($search, $replace));
                 $sql = 'UPDATE {course} ';
-                $sql.= 'SET sectioncache = REPLACE(sectioncache, ?, ?) ';
+                $sql.= 'SET sectioncache = REPLACE(sectioncache, ?, ?), legacyfiles = 2 ';
                 $sql.= 'WHERE id = '.$record['course'];
-                // force reset of course.sectioncache 
+                // force reset of course.sectioncache and enable legacy files
                 $this->db->execute($sql, array($search, $replace));
             }
         }
