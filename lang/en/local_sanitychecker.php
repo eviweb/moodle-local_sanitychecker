@@ -52,3 +52,14 @@ $string['local_sanitychecker_impl_quiz_notification_nonvalidqqi'] =
 $string['local_sanitychecker_impl_quiz_notification_quiz'] = 'Quiz ID : ';
 $string['local_sanitychecker_impl_quiz_notification_instances'] =
     'Question Instance IDs : ';
+
+// ImageLinkSanityChecker
+$string['local_sanitychecker_impl_legacyfilelink'] = 'Legacy File Link Sanity Checker';
+$string['local_sanitychecker_impl_legacyfilelink_description'] =
+    'Look for legacy file link inconsistencies';
+$string['local_sanitychecker_impl_legacyfilelink_notification_nonvalidlinks'] =
+    'The following legacy file links are non valid : ';
+$string['local_sanitychecker_impl_legacyfilelink_notification_findin'] = 'Find in table.column : ';
+$string['local_sanitychecker_impl_legacyfilelink_notification_links'] =
+    'Links found : ';
+

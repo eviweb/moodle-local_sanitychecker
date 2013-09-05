@@ -1,1 +1,2 @@
 \evidev\moodle\plugins\sanitychecker\impl\QuizSanityChecker
+\evidev\moodle\plugins\sanitychecker\impl\LegacyFileLinkSanityChecker
