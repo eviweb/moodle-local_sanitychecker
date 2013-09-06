@@ -66,5 +66,5 @@ $string['local_sanitychecker_impl_legacyfilelink_notification_nonvalidlinks'] =
     'The following legacy file links are non valid : ';
 $string['local_sanitychecker_impl_legacyfilelink_notification_findin'] = 'Find in table.column : ';
 $string['local_sanitychecker_impl_legacyfilelink_notification_links'] =
-    'Links found : ';
+    'ID : Links found / Course ID : ';
 

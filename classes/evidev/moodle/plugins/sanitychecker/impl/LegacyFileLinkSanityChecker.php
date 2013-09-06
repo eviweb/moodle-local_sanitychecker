@@ -85,9 +85,12 @@ final class LegacyFileLinkSanityChecker extends DatabaseSanityChecker
                     if (array_key_exists('course', $columns)) {
                         foreach ($columns as $column => $data) {
                             if (in_array($data->meta_type, array('C', 'X'))) {  // Text stuff only
-                                $sql = 'SELECT '.$column.', id, course ';
-                                $sql.= 'FROM {'.$table.'} ';
-                                $sql.= 'WHERE '.$column.' LIKE "%file.php%"';                                
+                                $sql = 'SELECT DISTINCT tbl.'.$column.', tbl.id, tbl.course ';
+                                $sql.= 'FROM {'.$table.'} tbl ';
+                                $sql.= 'JOIN {context} ctx ON ctx.instanceid=tbl.course ';
+                                $sql.= 'JOIN {files} f ON ctx.id=f.contextid ';
+                                $sql.= 'WHERE tbl.'.$column.' LIKE "%file.php%" ';
+                                $sql.= 'AND f.filearea = "legacy"';
                                 $rs = $this->db->get_recordset_sql($sql);
                                 while ($rs->valid()) {
                                     $content = $rs->current()->$column;
@@ -107,7 +110,7 @@ final class LegacyFileLinkSanityChecker extends DatabaseSanityChecker
                                         $record['course'] = $rs->current()->course;
                                         $record['matches'] = $matches;
                                         array_push($return[$key], $record);
-                                    }                                
+                                    }
                                     $rs->next();
                                 }
                                 $rs->close();                                
@@ -174,7 +177,7 @@ final class LegacyFileLinkSanityChecker extends DatabaseSanityChecker
             $message .= '   </i>';
             $message .= '   <ul>';
             foreach ($records as $record) {
-                $message .= '<li>'.$record['matches'][0][0].'</li>';
+                $message .= '<li>'.$record['id'].' : '.$record['matches'][0][0].' / '.$record['course'].'</li>';
             }
             $message .= '   </ul>';
             $message .= '</p>';

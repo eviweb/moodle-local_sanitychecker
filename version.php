@@ -30,8 +30,8 @@
  * @license     http://opensource.org/licenses/MIT MIT License
  */
 
-$plugin->version = 2013090500;
+$plugin->version = 2013090600;
 $plugin->requires = 2012062500;
 $plugin->component = 'local_sanitychecker';
 $plugin->maturity = MATURITY_ALPHA;
-$plugin->release = '0.4 (Build: '.$plugin->version.')';
+$plugin->release = '0.4.1 (Build: '.$plugin->version.')';
