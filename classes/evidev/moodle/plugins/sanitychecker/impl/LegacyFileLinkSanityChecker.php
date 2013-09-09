@@ -40,8 +40,7 @@ use \evidev\moodle\plugins\sanitychecker\DatabaseSanityChecker;
  * @package     local_sanitychecker
  * @author      Eric VILLARD <dev@eviweb.fr>
  * @copyright	(c) 2013 Eric VILLARD <dev@eviweb.fr>
- * @license     http://www.opensource.org/licenses/mit-license.html  MIT License 
- * @link        https://tracker.moodle.org/browse/MDL-32791
+ * @license     http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 final class LegacyFileLinkSanityChecker extends DatabaseSanityChecker
 {
