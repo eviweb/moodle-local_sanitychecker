@@ -68,3 +68,15 @@ $string['local_sanitychecker_impl_legacyfilelink_notification_findin'] = 'Find i
 $string['local_sanitychecker_impl_legacyfilelink_notification_links'] =
     'ID : Links found / Course ID : ';
 
+// EmptyQuestionCategorySanityChecker
+$string['local_sanitychecker_impl_emptyqcat'] = 'Empty Question Category Sanity Checker';
+$string['local_sanitychecker_impl_emptyqcat_description'] =
+    'Check for, and remove orphan random questions that prevent category deletion,
+     and delete related categories if not used<br />
+     Read more about this issue on the on Moodle Issue Tracker at
+     <a href="https://tracker.moodle.org/browse/MDL-29905" target="_blank">MDL-29905</a>';
+$string['local_sanitychecker_impl_emptyqcat_notification_categorieswithorphanrandoms'] =
+    'The following categories contain orphan random questions : ';
+$string['local_sanitychecker_impl_emptyqcat_notification_category'] = 'Category ID : ';
+$string['local_sanitychecker_impl_emptyqcat_notification_questions'] =
+    'Question instance IDs : ';
