@@ -82,12 +82,13 @@ final class LegacyFileLinkSanityChecker extends DatabaseSanityChecker
         if ($tables = $this->db->get_tables() ) {
             foreach ($tables as $table) {
                 if ($columns = $this->db->get_columns($table)) {
-                    if (array_key_exists('course', $columns)) {
+                    if (array_key_exists('course', $columns) || $table == 'course') {
                         foreach ($columns as $column => $data) {
                             if (in_array($data->meta_type, array('C', 'X'))) {  // Text stuff only
-                                $sql = 'SELECT DISTINCT tbl.'.$column.', tbl.id, tbl.course ';
+                                $switch = $table == 'course' ? 'tbl.id' : 'tbl.course';
+                                $sql = 'SELECT DISTINCT tbl.'.$column.', tbl.id, '.$switch.' AS courseid ';
                                 $sql.= 'FROM {'.$table.'} tbl ';
-                                $sql.= 'JOIN {context} ctx ON ctx.instanceid=tbl.course ';
+                                $sql.= 'JOIN {context} ctx ON ctx.instanceid='.$switch.' ';
                                 $sql.= 'JOIN {files} f ON ctx.id=f.contextid ';
                                 $sql.= 'WHERE tbl.'.$column.' LIKE "%file.php%" ';
                                 $sql.= 'AND f.filearea = "legacy"';
@@ -97,7 +98,7 @@ final class LegacyFileLinkSanityChecker extends DatabaseSanityChecker
                                     $matches = array();
                                     if (preg_match_all('/([^\'\"]+)\/file\.php\/(\d+)/', $content, $matches) &&
                                         $matches[1][0] != $CFG->wwwroot &&
-                                        $matches[2][0] != $rs->current()->course) {
+                                        $matches[2][0] != $rs->current()->courseid) {
                                         $key = $table.".".$column;
                                         if (!isset($return[$key])) {
                                             $return[$key] = array();
@@ -107,7 +108,7 @@ final class LegacyFileLinkSanityChecker extends DatabaseSanityChecker
                                         $record['table'] = $table;
                                         $record['column'] = $column;
                                         $record['wwwroot'] = $CFG->wwwroot;
-                                        $record['course'] = $rs->current()->course;
+                                        $record['course'] = $rs->current()->courseid;
                                         $record['matches'] = $matches;
                                         array_push($return[$key], $record);
                                     }
